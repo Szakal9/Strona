@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="PL">
+    <head>
+        <meta charset="utf-8">
+        <title> Obiekty JS </title>
+        <meta name="description" content="Obiekty w JS">
+        <meta name="keywords" content="Obiekty w JS">
+        <meta name="author" content="Sebastian Majewski">
+        <link rel="stylesheet" href="styl.css">
+        
+		
+		<style>
+		</style>
+    
+    </head>
+    <body>
+            <div class="blok1">
+                <h1>Godziny</h1>
+            </div>
+            <br>
+            <div class="blok2">
+                <h1>Ile dni żyjesz</h1>
+            </div>
+            <br>
+        <div class="blok3">
+            <a href="#" class="myButton" onclick=zapytaj()>Ile dni żyjesz</a>
+            <script>
+                function zapytaj(){
+                    var rok = window.prompt("Podaj rok urodzenia");
+                    var miesiac = window.prompt("Podaj miesiąc urodzenia (0-styczeń, 1-luty itp");
+                    var dzien = window.prompt("Podaj dzień urodzenia");
+                    var data_uro = new Date(rok,miesiac,dzien);
+                    var teraz = new Date();
+                    var iloscdni = (((((teraz.getTime() - data_uro.getTime()) /1000)/60)/60)/24);
+                    alert("Żyjesz " + iloscdni + " dni");
+                    
+                }
+            </script>
+        </div>
+        <br><br>
+        <div class="blok2">
+            <h1>Ilość dni do</h1>
+        </div>
+        <br>
+        <div class="blok3">
+            <a href="#" class="myButton" onclick=iledokoncaroku()>Ile zostało do końca roku</a>
+            <script>
+                function iledokoncaroku(){
+                    var data1 = new Date();
+                    var data2 = new Date(2022, 11, 31);
+                    var roznica = data2.getTime() - data1.getTime();
+                    var dni = roznica / (1000 * 60 * 60 * 24);
+                    alert("Do końca roku zostało: " + dni + " dni");
+                }
+            </script>
+            <a href="#" class="myButton" onclick=iledokoncarokuszkolnego()>Ile zostało do końca roku szkolnego</a>
+            <script>
+                function iledokoncarokuszkolnego(){
+                    var data1 = new Date();
+                    var data2 = new Date(2023, 5, 23);
+                    var roznica = data2.getTime() - data1.getTime();
+                    var dni = roznica / (1000 * 60 * 60 * 24);
+                    alert("Do końca roku zostało: " + dni + " dni");
+                }
+            </script>
+        </div>
+        <br><br>
+        <div class="blok2">
+            <h1>Dzień po liczbie dni</h1>
+        </div>
+        <br>
+        <div class="blok3">
+            <a href="#" class="myButton" onclick=cobedzieza()>Jaki dzień będzie za n dni</a>
+            <script>
+                function cobedzieza(){
+                    var data1 = new Date();
+                    var dni = window.prompt("Ile dni? ") *24*60*60*1000;
+                    data1.setTime(data1.getTime() + dni);
+                    var rok = data1.getFullYear();
+                    var miesiac = data1.getMonth() + 1;
+                    var dzien = data1.getDate();
+                    var godzina = data1.getHours();
+                    alert("Będzie " + rok +"."+ miesiac +"."+ dzien+ " godzina: " + godzina);
+                }
+            </script>
+        </div>
+    </body>
+</html>
